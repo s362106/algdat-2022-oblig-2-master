@@ -168,6 +168,27 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+
+    // Hjelpemetoder
+
+    private Node<T> finnNode(int indeks) {
+        Node<T> current;
+        if(indeks < antall/2) {
+            current = hode;
+            for(int i = 0; i < antall; i++) {
+                current = current.neste;
+            }
+            return current;
+        }
+        else {
+            current = hale;
+            for(int i = antall-1; i > indeks; i--) {
+                current = current.forrige;
+            }
+            return current;
+        }
+    }
+
 } // class DobbeltLenketListe
 
 

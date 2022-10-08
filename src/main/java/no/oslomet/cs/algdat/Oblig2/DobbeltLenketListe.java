@@ -80,6 +80,27 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
+    // hjelpemetode
+    private Node<T> finnNode(int indeks) {
+        indeksKontroll(indeks, false);
+        Node<T> current;
+
+        if (indeks < antall / 2) {
+            current = hode;
+            for (int i = 0; i < antall; i++) {
+                current = current.neste;
+            }
+            return current;
+        }
+        else {
+            current = hale;
+            for (int i = antall - 1; i > indeks; i--) {
+                current = current.forrige;
+            }
+            return current;
+        }
+    }
+
     @Override
     public int indeksTil(T verdi) {
         throw new UnsupportedOperationException();
@@ -148,10 +169,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public T next() {
-            if(iteratorendringer != endringer) {
+            if (iteratorendringer != endringer) {
                 throw new ConcurrentModificationException("Det er gjort endringer!");
             }
-            if(!hasNext()) throw new NoSuchElementException("Listen er tom!");
+            if (!hasNext()) throw new NoSuchElementException("Listen er tom!");
 
             fjernOK = true;
             T temp = denne.verdi;
@@ -171,26 +192,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         throw new UnsupportedOperationException();
     }
 
-
-    // Hjelpemetoder
-
-    private Node<T> finnNode(int indeks) {
-        Node<T> current;
-        if(indeks < antall/2) {
-            current = hode;
-            for(int i = 0; i < antall; i++) {
-                current = current.neste;
-            }
-            return current;
-        }
-        else {
-            current = hale;
-            for(int i = antall-1; i > indeks; i--) {
-                current = current.forrige;
-            }
-            return current;
-        }
-    }
 
 } // class DobbeltLenketListe
 

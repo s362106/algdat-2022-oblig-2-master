@@ -4,10 +4,7 @@ package no.oslomet.cs.algdat.Oblig2;
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
 
-import java.util.Comparator;
-import java.util.ConcurrentModificationException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
@@ -62,7 +59,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean leggInn(T verdi) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(verdi, "Null-verdier er ikke tillatt");
+
+        if (antall == 0) {
+            hode = hale = new Node<>(verdi, null, null);
+        } else {
+            hale = new Node<>(verdi, hale, null);
+        }
+
+        endringer++;
+        antall++;
+        return true;
     }
 
     @Override
@@ -150,13 +157,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return "[]";
         }
 
-        Node<T> current = hale;
+        Node<T> p = hale;
         StringBuilder s = new StringBuilder();
-        s.append('[').append(current.verdi);
-        current = current.forrige;
-        while(current != null){
-            s.append(',').append(' ').append(current.verdi);
-            current = current.forrige;
+        s.append('[').append(p.verdi);
+        p = p.forrige;
+        while(p != null){
+            s.append(',').append(' ').append(p.verdi);
+            p = p.forrige;
         }
         s.append(']');
 

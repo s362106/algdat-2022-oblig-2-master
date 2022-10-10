@@ -8,7 +8,7 @@ import java.util.*;
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
- //fefee
+
     /**
      * Node class
      *

@@ -15,6 +15,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
      * @param <T>
      */
     private static final class Node<T> {
+        //jfoeifjeo
         private T verdi;                   // nodens verdi
         private Node<T> forrige, neste;    // pekere
 

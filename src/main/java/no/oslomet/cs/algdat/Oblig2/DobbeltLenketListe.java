@@ -5,6 +5,7 @@ package no.oslomet.cs.algdat.Oblig2;
 
 
 import java.util.*;
+import java.util.stream.Stream;
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
@@ -80,31 +81,35 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Liste<T> subliste(int fra, int til) {
+
             fratilKontroll(antall,fra,til);
+
             Liste<T> array = new DobbeltLenketListe<>();
+
             int intervall = (til-fra);
 
             if (intervall < 1){
                 return array;
             }
 
-            Node<T> curr = finnNode(fra);
+            Node<T> current = finnNode(fra);
 
-            for (; intervall > 0; intervall--){
-                array.leggInn(curr.verdi);
-                curr = curr.neste;
+            for(;intervall > 0;intervall--) {
+                array.leggInn(current.verdi);
+                current = current.neste;
             }
             return array;
-
     }
+
 
     private void fratilKontroll(int tablengde, int fra, int til)
     {
         if (fra < 0)
             throw new IndexOutOfBoundsException();
 
-        if (til > tablengde)
+        if (til > tablengde){
             throw new IndexOutOfBoundsException();
+        }
 
         if (fra > til)
             throw new IllegalArgumentException();
@@ -127,6 +132,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean leggInn(T verdi) {
+        return true;
+    }
+
+    @Override
+    public void leggInn(int indeks, T verdi) {
         Objects.requireNonNull(verdi, "Null-verdier er ikke tillatt");
 
         if (antall == 0) {
@@ -137,12 +147,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         endringer++;
         antall++;
-        return true;
-    }
-
-    @Override
-    public void leggInn(int indeks, T verdi) {
-        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -158,17 +162,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     // hjelpemetode
     private Node<T> finnNode(int indeks) {
+
         indeksKontroll(indeks, false);
+
         Node<T> current;
 
         if (indeks < antall / 2) {
             current = hode;
-            for (int i = 0; i < antall; i++) {
+            for (int i = 0; i < indeks; i++) {
                 current = current.neste;
             }
             return current;
-        }
-        else {
+        } else {
             current = hale;
             for (int i = antall - 1; i > indeks; i--) {
                 current = current.forrige;
@@ -196,14 +201,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T oppdater(int indeks, T nyverdi) {
-        Objects.requireNonNull(nyverdi,"null er ulovlig!");
 
-        Node<T> curr = finnNode(indeks);
+        Objects.requireNonNull(nyverdi,"Ikke tillatt med null-verier!");
 
-        T forrigVerdi = curr.verdi;
-        curr.verdi = nyverdi;
+        indeksKontroll(indeks,false);
+
+        Node<T> peker = finnNode(indeks);
+
+        T gammelVerdi = peker.verdi;
         endringer++;
-        return forrigVerdi;
+        peker.verdi = nyverdi;
+
+        return gammelVerdi;
 
     }
 

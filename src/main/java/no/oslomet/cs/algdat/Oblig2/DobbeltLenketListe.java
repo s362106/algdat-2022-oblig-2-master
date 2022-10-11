@@ -147,21 +147,34 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
+
         Objects.requireNonNull(verdi,"Ikke tillatt med null-verdier!");
 
-        indeksKontroll(indeks,true);
-        if (indeks == 0){
-            hode = new Node<>(verdi,null,null);
-            if (antall == 0) hale = hode;
+
+        if (indeks > antall || indeks < 0){
+            throw new IndexOutOfBoundsException("Indeksen kan ikke være strørre en antall noder, og ikke mindre enn 0!");
         }
-        else if (indeks == antall){
-            hale = hale.neste = new Node<>(verdi,hale,null);
+
+        if (indeks == 0 && antall == 0) {
+            hode = hale = new Node<>(verdi, null, null);
+        }
+        else if (indeks == antall) {
+            hale = new Node<>(verdi, hale, null);
+            hale.forrige.neste = hale;
+        } else if (indeks == 0) {
+            hode = new Node<>(verdi, null, hode);
+            hode.neste.forrige = hode;
         }
         else {
             Node<T> p = hode;
-            for (int i = 1;i < indeks;i++) p = p.neste;
 
-            p.neste = new Node<>(verdi,p.forrige,p.neste);
+            int i = 0;
+
+            for (; i < indeks; i++)
+                p = p.neste;
+            p = new Node<>(verdi, p.forrige, p);
+
+            p.neste.forrige = p.forrige.neste = p;
         }
 
         endringer++;

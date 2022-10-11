@@ -36,15 +36,15 @@ sjekke om indeksTil(verdi) ikke vil returnere -1.
 
 I oppgave 5 så brukte vi en ... til å ...
 
-I oppgave 6 skulle vi lage metode boolean fjern(T verdi) skal fjerne verdi fra listen og så returnere true. Og om verdi 
-ikke er i listen eller er null returnerer den false. Vi løste denne vha 3 hjelpepekere p, q, r. Vi bruker r til å gå 
-gjennom listen, og q som forgjengeren til r, p er forgjengeren igjen til q. Vi har en while-løkke som kjører mens r ikke
-er null, og brytes når vi har funnet verdi, ellers vil den peke til neste. Vi sjekker først hvis den første fjernes, 
-altså hode, og flytter bare hode til neste node og setter hode.forrige lik null for å fjerne verdi fra lenken. Og om
-listen kun består av ett element fjerner vi den ved å sette hode og hale lik null. Så sjekker vi om den siste fjernes, 
-altså halen, og bare flytter hale til noden rett før og setter hale.neste lik null. Siste tilfelle er da at verdi i 
-midten fjernes, og da setter vi nodene en fram , p=q q=r r=r.neste, også lar p.neste være r og r.forrige være lik p, 
-da vil q bli fjernet. Til slutt reduserer vi antallet og øker endringene, og returnerer true. Også har vi metoden T 
+I oppgave 6 skulle vi lage metode boolean fjern(T verdi) som skal fjerne verdi fra listen og returnere true. Og om verdi 
+ikke er i listen eller er null returnerer den false. Her brukte vi 3 hjelpepekere; r til å gå gjennom listen, og q som 
+forgjengeren til r, p er forgjengeren igjen til q. Vi har en while-løkke som kjører mens r ikke er null, og brytes når 
+vi har funnet verdi, ellers vil den peke til neste. Vi sjekker først om det er den første som fjernes, altså hode, og 
+flytter bare hode til neste node og setter hode.forrige lik null for å fjerne verdi fra lenken. Og om listen kun består 
+av ett element fjerner vi den ved å sette hode og hale lik null. Så sjekker vi om den siste fjernes, altså halen, og 
+bare flytter hale til noden rett før og setter hale.neste lik null. Siste tilfelle er da at verdi i midten fjernes, og 
+da setter vi nodene ett hakk videre , p=q q=r r=r.neste, også lar p.neste peke på r og r.forrige påke på p, da vil q 
+bli fjernet. Til slutt reduserer vi antallet og øker endringene, og returnerer true. Vi har også metoden T 
 fjern(int indeks) hvor vi gjør mye av det samme, men returnerer verdien på posisjon indeks isteden. Vi bruker 
 indeksKontroll() for å sjekke indeks først. Her bruker vi hjelpevariabel temp til å lagre verdien som fjernes. Hvis 
 den første skal fjernes (hode), lagrer vi først verdien i temp, så sjekker vi om listen består av ett element for så 

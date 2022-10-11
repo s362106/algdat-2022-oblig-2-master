@@ -268,9 +268,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return false;
         } else if (antall == 1){
             hode = hale = null;
-            antall--;
-            endringer++;
-            return true;
         } else if (r == hode) {
             hode = hode.neste;
             hode.forrige = null;
@@ -297,14 +294,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         T temp;
 
-        if (indeks == 0) {
+        if (antall == 1) {
             temp = hode.verdi;
-            if (antall == 1) {
-                hode = hale = null;
-                antall--;
-                endringer++;
-                return temp;
-            }
+            hode = hale = null;
+        } else if (indeks == 0) {
+            temp = hode.verdi;
             hode = hode.neste;
             hode.forrige = null;
         } else {
@@ -313,7 +307,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             temp = q.verdi;
             if (q == hale) {
                 hale = hale.forrige;
-                p.neste = null;
+                hale.neste = null;
                 antall--;
                 endringer++;
                 return temp;

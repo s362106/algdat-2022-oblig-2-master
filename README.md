@@ -43,16 +43,15 @@ vi har funnet verdi, ellers vil den peke til neste. Vi sjekker først om det er 
 flytter bare hode til neste node og setter hode.forrige lik null for å fjerne verdi fra lenken. Og om listen kun består 
 av ett element fjerner vi den ved å sette hode og hale lik null. Så sjekker vi om den siste fjernes, altså halen, og 
 bare flytter hale til noden rett før og setter hale.neste lik null. Siste tilfelle er da at verdi i midten fjernes, og 
-da setter vi nodene ett hakk videre , p=q q=r r=r.neste, også lar p.neste peke på r og r.forrige påke på p, da vil q 
+da setter vi nodene ett hakk videre , p=q r=r.neste, også lar p.neste peke på r og r.forrige påke på p, da vil q 
 bli fjernet. Til slutt reduserer vi antallet og øker endringene, og returnerer true. Vi har også metoden T 
 fjern(int indeks) hvor vi gjør mye av det samme, men returnerer verdien på posisjon indeks isteden. Vi bruker 
-indeksKontroll() for å sjekke indeks først. Her bruker vi hjelpevariabel temp til å lagre verdien som fjernes. Hvis 
-den første skal fjernes (hode), lagrer vi først verdien i temp, så sjekker vi om listen består av ett element for så 
-å sette hode og hale lik null, ellers setter vi hode til neste node og hodens.forrige lik null. Om det ikke er første 
-element ser vi om det er hale som fjernes, da setter vi hale til noden rett før og hale.neste lik null. Dette gjør vi 
-vha hjelpepekere p og q, hvor p peker på noden før indeks og q er etter p, så noden som skal fjernes. Om det ikke er 
-halen som skal fjernes har vi en hjelpepeker r som er q.neste, vi fjerner da q ved å sette p.neste være r og r.forrige 
-være lik p. Vi returnerer da verdien, og glemmer selvfølgelig ikke å redusere antall og øke endringer.
+indeksKontroll() for å sjekke indeks først. Her bruker vi hjelpevariabel temp til å lagre verdien som fjernes. Og 
+sjekker tilfellene om det er hode som skal fjernes, om listen bare har ett element som i forrige metode. Om det ikke er første 
+element ser vi om det er hale som fjernes, og fjerner på samme måte som metoden før; vha hjelpepekere p og q, hvor p 
+peker på noden før indeks og q er etter p, altså noden som skal fjernes. Om det ikke er halen som skal fjernes har vi 
+en hjelpepeker r som er q.neste, vi fjerner da q ved å sette p.neste til å peke på r og r.forrige på p. Vi returnerer 
+da verdien, og glemmer selvfølgelig ikke å redusere antall og øke endringer.
 
 I oppgave 7 metode-1 så deklarerte og initierte vi en Node denne som peker på hode etterpå
 brukte vi en for-løkke som kjører antall-1 ganger. I forløkken fant vi neste Node som kommer etter denne.

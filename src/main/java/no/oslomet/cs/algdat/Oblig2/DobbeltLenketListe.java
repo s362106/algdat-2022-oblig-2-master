@@ -241,35 +241,36 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return false;
         }
 
-        Node<T> p = hode, q = null, r =null;
+        Node<T> r = hode, q = null, p;
 
-        while (p != null) {
-            if (p.verdi.equals(verdi)) {
+        while (r != null) {
+            if (r.verdi.equals(verdi)) {
                 break;
             }
-            q = p;
-            p = p.neste;
+            q = r;
+            r = r.neste;
         }
 
-        if (p == null) {
+        if (r == null) {
             return false;
         } else if (antall == 1){
             hode = hale = null;
             antall--;
+            endringer++;
             return true;
-        } else if (p == hode) {
+        } else if (r == hode) {
             hode = hode.neste;
             hode.forrige = null;
-        } else if (p == hale) {
+        } else if (r == hale) {
             hale = hale.forrige;
             hale.neste = null;
         } else {
-            r = q;
-            q = p;
-            p = p.neste;
+            p = q;
+            q = r;
+            r = r.neste;
 
-            r.neste = p;
-            p.forrige = r;
+            p.neste = r;
+            r.forrige = p;
             q.neste = q.forrige = null;
         }
 

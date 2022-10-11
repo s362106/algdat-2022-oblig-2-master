@@ -326,7 +326,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         for(Node<T> t = hode; t != null; t = null) {
             t.verdi = null;
         }
-        hode = hale;
+        hode = hale = null;
         antall = 0;
         endringer++;
 
@@ -437,9 +437,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 hode.forrige = null;
             }
             else{
-                Node<T> forrigeNode = denne.forrige;
-                forrigeNode.forrige.neste = forrigeNode.neste;
-                forrigeNode.neste.forrige = forrigeNode.forrige;
+                Node<T> p = denne.forrige;
+                p.forrige.neste = p.neste;
+                p.neste.forrige = p.forrige;
             }
             antall--;
             endringer++;

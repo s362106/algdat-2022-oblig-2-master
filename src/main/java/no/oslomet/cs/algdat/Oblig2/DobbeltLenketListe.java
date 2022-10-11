@@ -149,7 +149,25 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(verdi,"Ikke tillatt med null-verdier!");
+
+        indeksKontroll(indeks,true);
+        if (indeks == 0){
+            hode = new Node<>(verdi,null,null);
+            if (antall == 0) hale = hode;
+        }
+        else if (indeks == antall){
+            hale = hale.neste = new Node<>(verdi,hale,null);
+        }
+        else {
+            Node<T> p = hode;
+            for (int i = 1;i < indeks;i++) p = p.neste;
+
+            p.neste = new Node<>(verdi,p.forrige,p.neste);
+        }
+
+        endringer++;
+        antall++;
     }
 
     @Override
@@ -304,7 +322,16 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException();
+        long tid = System.nanoTime();
+
+        // Metode 1
+        for(Node<T> t = hode; t != null; t = null) {
+            t.verdi = null;
+        }
+        hode = hale;
+        antall = 0;
+        endringer++;
+
     }
 
     @Override
@@ -396,11 +423,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 throw new IllegalStateException("Kan ikke fjerne noe element nå!");
             }
             if(iteratorendringer != endringer) {
-                throw new ConcurrentModificationException("Iteratorendringer og endringer stemmer ikke med hverandre!");
+                throw new ConcurrentModificationException("Iteratorendringer stemmer ikke med endringer i listen!");
+            }
+            else {
+                fjernOK = false;
             }
             if(antall == 1) hode = hale = null;
 
-            if(denne == null) {
+            else if(denne == null) {
                 hale = hale.forrige;
                 hale.neste = null;
             }

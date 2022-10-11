@@ -37,7 +37,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private int endringer;         // antall endringer i listen
 
     public DobbeltLenketListe() {
-        throw new UnsupportedOperationException();
+        hode = null;
+        hale = null;
+
+        endringer = 0;
+        antall = 0;
     }
 
     public DobbeltLenketListe(T[] a) {
@@ -49,24 +53,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 //finner den første elementet i a som ikke er lik null
         if (lengde > 0){
             int i = 0;
-            for (;i < lengde; i++){
-                T verdi = a[i];
-                if (verdi != null){
+            while (i < lengde){
+                T element = a[i];
+                if (element != null){
                     //her lages hode
                     hode = new Node<>(a[i]);
                     antall++;
                     break;
                 }
+                i++;
             }
-
             hale = hode;
             if (hode != null){
-                for (;i<lengde;i++){
+                i++;
+                while (i < lengde){
                     if (a[i] != null){
                         hale.neste = new Node<>(a[i],hale,null);
                         hale = hale.neste;
                         antall++;
                     }
+                    i++;
                 }
             }
         }
@@ -87,7 +93,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return true;
         }
         else {
-            return true;
+            return false;
         }
     }
 

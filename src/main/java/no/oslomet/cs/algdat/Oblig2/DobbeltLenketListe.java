@@ -41,11 +41,34 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public DobbeltLenketListe(T[] a) {
-
         int lengde = a.length;
 
         if (a == null){
             throw new NullPointerException("Tabellen a er null!");
+        }
+//finner den første elementet i a som ikke er lik null
+        if (lengde > 0){
+            int i = 0;
+            for (;i < lengde; i++){
+                T verdi = a[i];
+                if (verdi != null){
+                    //her lages hode
+                    hode = new Node<>(a[i]);
+                    antall++;
+                    break;
+                }
+            }
+
+            hale = hode;
+            if (hode != null){
+                for (;i<lengde;i++){
+                    if (a[i] != null){
+                        hale.neste = new Node<>(a[i],hale,null);
+                        hale = hale.neste;
+                        antall++;
+                    }
+                }
+            }
         }
     }
 
@@ -60,8 +83,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean tom() {
-        if (antall > 0){
-            return false;
+        if (hode == null){
+            return true;
         }
         else {
             return true;

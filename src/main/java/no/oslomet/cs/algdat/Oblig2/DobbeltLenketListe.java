@@ -250,7 +250,16 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException();
+        long tid = System.nanoTime();
+
+        // Metode 1
+        for(Node<T> t = hode; t != null; t = null) {
+            t.verdi = null;
+        }
+        hode = hale;
+        antall = 0;
+        endringer++;
+
     }
 
     @Override

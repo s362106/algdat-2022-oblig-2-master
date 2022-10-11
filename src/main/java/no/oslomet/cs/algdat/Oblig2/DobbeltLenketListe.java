@@ -476,6 +476,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 liste.oppdater(i+1, temp);
             }
         }
+        //sjekk utkast!
     }
 
 

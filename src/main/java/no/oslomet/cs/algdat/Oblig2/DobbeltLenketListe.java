@@ -279,12 +279,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             hale.neste = null;
         } else {
             p = q;
-            q = r;
             r = r.neste;
 
             p.neste = r;
             r.forrige = p;
-            q.neste = q.forrige = null;
         }
 
         antall--;
@@ -301,7 +299,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         if (indeks == 0) {
             temp = hode.verdi;
-
             if (antall == 1) {
                 hode = hale = null;
                 antall--;
@@ -324,7 +321,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             Node<T> r = q.neste;
             p.neste = r;
             r.forrige = p;
-            q.neste = q.forrige = null;
         }
 
         antall--;

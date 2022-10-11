@@ -28,11 +28,31 @@ antall og endringer, og returnerte true.
 
 I oppgave 3 så brukte vi en ... til å ...
 
-I oppgave 4 så brukte vi en ... til å ...
+I oppgave 4 startet vi med lage metoden int indeksTil(T verdi) ved å sjekke om verdi er null for så å returnere -1. 
+Videre hadde vi en node p som traverserer fra hode til hale vha neste-peker og en for-løkke som returnerer indeksen 
+om den finnes, ellers returnerer den -1. Så lagde vi metoden boolean inneholder(T verdi) som skulle returnere true  
+hvis listen inneholdt verdi, dette gjorde vi enkelt med metoden vi nettopp lagde, indeksTil(T verdi), ved å la metoden
+sjekke om indeksTil(verdi) ikke vil returnere -1.
 
 I oppgave 5 så brukte vi en ... til å ...
 
-I oppgave 6 så brukte vi en ... til å ...
+I oppgave 6 skulle vi lage metode boolean fjern(T verdi) skal fjerne verdi fra listen og så returnere true. Og om verdi 
+ikke er i listen eller er null returnerer den false. Vi løste denne vha 3 hjelpepekere p, q, r. Vi bruker r til å gå 
+gjennom listen, og q som forgjengeren til r, p er forgjengeren igjen til q. Vi har en while-løkke som kjører mens r ikke
+er null, og brytes når vi har funnet verdi, ellers vil den peke til neste. Vi sjekker først hvis den første fjernes, 
+altså hode, og flytter bare hode til neste node og setter hode.forrige lik null for å fjerne verdi fra lenken. Og om
+listen kun består av ett element fjerner vi den ved å sette hode og hale lik null. Så sjekker vi om den siste fjernes, 
+altså halen, og bare flytter hale til noden rett før og setter hale.neste lik null. Siste tilfelle er da at verdi i 
+midten fjernes, og da setter vi nodene en fram , p=q q=r r=r.neste, også lar p.neste være r og r.forrige være lik p, 
+da vil q bli fjernet. Til slutt reduserer vi antallet og øker endringene, og returnerer true. Også har vi metoden T 
+fjern(int indeks) hvor vi gjør mye av det samme, men returnerer verdien på posisjon indeks isteden. Vi bruker 
+indeksKontroll() for å sjekke indeks først. Her bruker vi hjelpevariabel temp til å lagre verdien som fjernes. Hvis 
+den første skal fjernes (hode), lagrer vi først verdien i temp, så sjekker vi om listen består av ett element for så 
+å sette hode og hale lik null, ellers setter vi hode til neste node og hodens.forrige lik null. Om det ikke er første 
+element ser vi om det er hale som fjernes, da setter vi hale til noden rett før og hale.neste lik null. Dette gjør vi 
+vha hjelpepekere p og q, hvor p peker på noden før indeks og q er etter p, så noden som skal fjernes. Om det ikke er 
+halen som skal fjernes har vi en hjelpepeker r som er q.neste, vi fjerner da q ved å sette p.neste være r og r.forrige 
+være lik p. Vi returnerer da verdien, og glemmer selvfølgelig ikke å redusere antall og øke endringer.
 
 I oppgave 7 metode-1 så deklarerte og initierte vi en Node denne som peker på hode etterpå
 brukte vi en for-løkke som kjører antall-1 ganger. I forløkken fant vi neste Node som kommer etter denne.

@@ -321,16 +321,27 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void nullstill() {
-        long tid = System.nanoTime();
 
-        // Metode 1
-        for(Node<T> t = hode; t != null; t = null) {
-            t.verdi = null;
+        //Metode 1
+        Node<T>  denne = hode;
+        for(int i = 0; i < antall; i++) {
+            Node<T> neste = denne.neste;
+            denne.forrige = denne.neste = null;
+            denne = neste;
         }
         hode = hale = null;
         antall = 0;
         endringer++;
 
+        /*
+        Metode-2 brukte mye lengre tid enn Metode 1
+       for(int i = 0; i < antall; i++){
+       fjern(0);
+       }
+       hode = hale = null;
+       antall = 0;
+       endringer++;
+       */
     }
 
     @Override

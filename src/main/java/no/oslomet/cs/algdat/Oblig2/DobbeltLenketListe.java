@@ -132,21 +132,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean leggInn(T verdi) {
-        return true;
-    }
-
-    @Override
-    public void leggInn(int indeks, T verdi) {
         Objects.requireNonNull(verdi, "Null-verdier er ikke tillatt");
 
         if (antall == 0) {
             hode = hale = new Node<>(verdi, null, null);
         } else {
-            hale = new Node<>(verdi, hale, null);
+            Node<T> p = new Node<>(verdi, hale, null);
+            hale.neste = p;
+            hale = p;
         }
 
         endringer++;
         antall++;
+        return true;
+    }
+
+    @Override
+    public void leggInn(int indeks, T verdi) {
+        throw new UnsupportedOperationException();
     }
 
     @Override

@@ -42,6 +42,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         endringer = 0;
         antall = 0;
+
+        //hei fahmi
     }
 
     public DobbeltLenketListe(T[] a) {

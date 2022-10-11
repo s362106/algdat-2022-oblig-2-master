@@ -134,12 +134,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public boolean leggInn(T verdi) {
         Objects.requireNonNull(verdi, "Null-verdier er ikke tillatt");
 
-        if (antall == 0) {
+        if (tom()) {
             hode = hale = new Node<>(verdi, null, null);
         } else {
-            Node<T> p = new Node<>(verdi, hale, null);
-            hale.neste = p;
-            hale = p;
+            hale = hale.neste = new Node<>(verdi, hale, null);
         }
 
         endringer++;
@@ -249,7 +247,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             if (p.verdi.equals(verdi)) {
                 break;
             }
-            r = q;
             q = p;
             p = p.neste;
         }
@@ -290,14 +287,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         if (indeks == 0) {
             temp = hode.verdi;
-            hode = hode.neste;
-            hode.forrige = null;
+
             if (antall == 1) {
                 hode = hale = null;
                 antall--;
                 endringer++;
                 return temp;
             }
+            hode = hode.neste;
+            hode.forrige = null;
         } else {
             Node<T> p = finnNode(indeks-1);
             Node<T> q = p.neste;
@@ -336,7 +334,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public String toString() {
-        if (antall == 0) {
+        if (tom()) {
             return "[]";
         }
 
@@ -354,7 +352,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public String omvendtString() {
-        if (antall == 0) {
+        if (tom()) {
             return "[]";
         }
 

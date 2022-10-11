@@ -333,11 +333,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 throw new IllegalStateException("Kan ikke fjerne noe element nå!");
             }
             if(iteratorendringer != endringer) {
-                throw new ConcurrentModificationException("Iteratorendringer og endringer stemmer ikke med hverandre!");
+                throw new ConcurrentModificationException("Iteratorendringer stemmer ikke med endringer i listen!");
+            }
+            else {
+                fjernOK = false;
             }
             if(antall == 1) hode = hale = null;
 
-            if(denne == null) {
+            else if(denne == null) {
                 hale = hale.forrige;
                 hale.neste = null;
             }

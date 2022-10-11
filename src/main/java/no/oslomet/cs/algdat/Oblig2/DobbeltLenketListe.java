@@ -145,7 +145,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         endringer++;
         antall++;
         return true;
-
     }
 
     @Override
@@ -222,12 +221,85 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException();
+        if (verdi == null) {
+            return false;
+        }
+
+        Node<T> p = hode, q = null, r =null;
+
+        while (p != null) {
+            if (p.verdi.equals(verdi)) {
+                break;
+            }
+            r = q;
+            q = p;
+            p = p.neste;
+        }
+
+        if (p == null) {
+            return false;
+        } else if (antall == 1){
+            hode = hale = null;
+            antall--;
+            return true;
+        } else if (p == hode) {
+            hode = hode.neste;
+            hode.forrige = null;
+        } else if (p == hale) {
+            hale = hale.forrige;
+            hale.neste = null;
+        } else {
+            r = q;
+            q = p;
+            p = p.neste;
+
+            r.neste = p;
+            p.forrige = r;
+            q.neste = q.forrige = null;
+        }
+
+        antall--;
+        endringer++;
+
+        return true;
     }
 
     @Override
     public T fjern(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks,false);
+
+        T temp;
+
+        if (indeks == 0) {
+            temp = hode.verdi;
+            hode = hode.neste;
+            hode.forrige = null;
+            if (antall == 1) {
+                hode = hale = null;
+                antall--;
+                endringer++;
+                return temp;
+            }
+        } else {
+            Node<T> p = finnNode(indeks-1);
+            Node<T> q = p.neste;
+            temp = q.verdi;
+            if (q == hale) {
+                hale = hale.forrige;
+                p.neste = null;
+                antall--;
+                endringer++;
+                return temp;
+            }
+            Node<T> r = q.neste;
+            p.neste = r;
+            r.forrige = p;
+            q.neste = q.forrige = null;
+        }
+
+        antall--;
+        endringer++;
+        return temp;
     }
 
     @Override

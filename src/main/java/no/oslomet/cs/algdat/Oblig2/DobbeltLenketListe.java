@@ -43,7 +43,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         endringer = 0;
         antall = 0;
 
-        //hei fahmi
     }
 
     public DobbeltLenketListe(T[] a) {
@@ -126,7 +125,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T hent(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks,false);
+        return finnNode(indeks).verdi;
     }
 
     // hjelpemetode
@@ -169,7 +169,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T oppdater(int indeks, T nyverdi) {
-        throw new UnsupportedOperationException();
+        Objects.requireNonNull(nyverdi,"null er ulovlig!");
+
+        Node<T> curr = finnNode(indeks);
+
+        T forrigVerdi = curr.verdi;
+        curr.verdi = nyverdi;
+        endringer++;
+        return forrigVerdi;
+
     }
 
     @Override

@@ -271,10 +271,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         @Override
         public void remove() {
             if(!fjernOK) {
-                throw new IllegalStateException();
+                throw new IllegalStateException("Kan ikke fjerne noe element nå!");
             }
             if(iteratorendringer != endringer) {
-                throw new ConcurrentModificationException();
+                throw new ConcurrentModificationException("Iteratorendringer og endringer stemmer ikke med hverandre!");
             }
             if(antall == 1) hode = hale = null;
 
@@ -282,7 +282,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 hale = hale.forrige;
                 hale.neste = null;
             }
-
+            else if(denne.forrige == hode) {
+                hode = hode.neste;
+                hode.forrige = null;
+            }
+            else{
+                Node<T> forrigeNode = denne.forrige;
+                forrigeNode.forrige.neste = forrigeNode.neste;
+                forrigeNode.neste.forrige = forrigeNode.forrige;
+            }
+            antall--;
+            endringer++;
+            iteratorendringer++;
         }
 
     } // class DobbeltLenketListeIterator

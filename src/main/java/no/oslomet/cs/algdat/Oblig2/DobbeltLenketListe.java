@@ -126,7 +126,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         Node<T> p = hode;
-        for (int i=0; i<antall; i++) {
+        for (int i = 0; i < antall; i++) {
             if (p.verdi.equals(verdi)) {
                 return i;
             }
@@ -158,7 +158,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public String toString() {
-        if(antall==0){
+        if (antall == 0) {
             return "[]";
         }
 
@@ -166,7 +166,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         StringBuilder s = new StringBuilder();
         s.append('[').append(p.verdi);
         p = p.neste;
-        while (p != null){
+        while (p != null) {
             s.append(',').append(' ').append(p.verdi);
             p = p.neste;
         }
@@ -176,7 +176,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public String omvendtString() {
-        if(antall==0){
+        if (antall == 0) {
             return "[]";
         }
 
@@ -184,7 +184,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         StringBuilder s = new StringBuilder();
         s.append('[').append(p.verdi);
         p = p.forrige;
-        while(p != null){
+        while (p != null) {
             s.append(',').append(' ').append(p.verdi);
             p = p.forrige;
         }
@@ -241,7 +241,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException();
+            if(!fjernOK) {
+                throw new IllegalStateException();
+            }
+            if(iteratorendringer != endringer) {
+                throw new ConcurrentModificationException();
+            }
+            if(antall == 1) hode = hale = null;
+
+            if(denne == null) {
+                hale = hale.forrige;
+                hale.neste = null;
+            }
+
         }
 
     } // class DobbeltLenketListeIterator

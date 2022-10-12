@@ -33,7 +33,14 @@ med forrige- og neste-peker som null. Om listen ikke er tom på forhånd satte v
 hale.neste peke på den nye noden med forrige-peker som hale og neste-peker som null. Til slutt økte vi variablene
 antall og endringer, og returnerte true.
 
-I oppgave 3 så brukte vi en ... til å ...
+I oppgave 3a) så gikk frem ved at vi lagde en privat hjelpetabell finnNode(), vi starter med å lage et if-kall som sjekker idenks mindre enn antall delt på 2, 
+hvis dette stemmer så er indeksen mot venstre i listen og dermed starter vi fra hode. Ellers hvis det er større enn halvparten starter vi på hale.
+Deretter lager vi hent(), hvor det kalles idekskontroll, med false parameter. Det metoden gjør er å hente posisjonens verdi, nemlig T-verdien som er posisjonen for en node.
+Så lager vi metoden oppdater(), starter med at det kreves at nyverdi ikke kan være null! Deretter opprettes en peker, som peker på noden sin indeks-posisjon. Deretter oppreter vi gammelVerdi
+som har verdien til pekeren. Øker endringer og dermed setter gammelVerdi til å være lik nynyverdi. og retunerer gammelverdi! Oppgave 3b) lager vi metoden subliste(), først implementerer vi fraTilKontrolleren fra kompendiet. Deretter lager vi en lager vi et Array
+fra vår Liste i koden. Så definerer vi intervallet som er til-fra, og sjekker om intervallet er mindre enn 1 ved et if-kall. Hvis dette stemmer retunerer vi array-en liste-(en instans av klassen DobbeltLenketListe)). 
+Så lager vi en "nåværende" node- som finner noder fra intervallet fra. Vi løper gjennom et forløkke fra det intervallet som vi først hadde definert
+og deretter legger verdien til "nåværende" node inn i array-listen vår. Den nåværende blir satt til å være nåværende.neste. og vi retunerer array-listen til slutt. 
 
 I oppgave 4 startet vi med lage metoden int indeksTil(T verdi) ved å sjekke om verdi er null for så å returnere -1. 
 Videre hadde vi en node p som traverserer fra hode til hale vha neste-peker og en for-løkke som returnerer indeksen 

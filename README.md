@@ -48,11 +48,12 @@ om den finnes, ellers returnerer den -1. Så lagde vi metoden boolean inneholder
 hvis listen inneholdt verdi, dette gjorde vi enkelt med metoden vi nettopp lagde, indeksTil(T verdi), ved å la metoden
 sjekke om indeksTil(verdi) ikke vil returnere -1.
 
-I oppgave 5 startet vi med å utvikle metoden leggInn(), vi starter med et tiltak som gjør at verdi ikke kan være null. Vi sjekker deretter
-indeks > antall og indeks < 0 hvis dette stemmer kaster vi en unntak om at idekesen er større eller lik antallet. Deretter lager vi en if-kall som sjekker om antall == 0 og indeks == 0
-og lager en ny node som er har hode og hale som er lik hverandre, hvor neste og forrige peker på null. Hvis indeks == antall så lager vi en ny hale, også hale sin forrige.neste peker peker på ny halen.
-Hvis indeks == 0, så oppdaterer vi hode med et ny hode node forrige som null og neste peker som gamle hode. Hode sin neste.forrige = hode. Hvis ikke disse tilfellene stemmer så lager vi en ny node p som peker på hode. Løper gjennom en løkke
-dobbelLenketListen og vi setter node sin nesre sin forrige til å være lik node sin forrrig.neste sin p. Altså at begge pekerne peker på samme noe
+I oppgave 5 startet vi med å utvikle metoden leggInn(), vi starter med et krav som gjør at verdi ikke kan være null. Vi sjekker deretter
+indeks > antall og indeks < 0 hvis dette stemmer kaster vi en unntak om at indeksen er større eller lik antallet. Deretter lager vi en if-kall som sjekker om antall == 0 og indeks == 0
+og lager en ny node som er hode og hale som er lik hverandre, hvor neste og forrige peker på null. Hvis indeks == antall så lager vi en ny hale, også hale sin forrige.neste peker, peker på ny hale.
+Hvis indeks == 0, så oppdaterer vi hode med et ny node forrige som null og neste peker som gamle hode. Noden som kommer etter hode sin forrige peker skal peke på hode. Hvis ikke disse tilfellene stemmer så lager vi en ny node p som peker på hode. Løper gjennom en løkke
+dobbelLenketListen og vi finner posisjonen til noden, deretter lager vi en ny node p, som har verdien verdi. Forrige pekeren peker på p.forrige og neste pekeren til den ny noden peker på forrige p. 
+Altså at begge pekerne peker på samme noe
 
 I oppgave 6 skulle vi lage metode boolean fjern(T verdi) som skal fjerne verdi fra listen og returnere true. Og om verdi 
 ikke er i listen eller er null returnerer den false. Her brukte vi 3 hjelpepekere; r til å gå gjennom listen, og q som 

@@ -72,12 +72,12 @@ brukte vi en for-løkke som kjører antall-1 ganger. I forløkken fant vi neste 
 Etterpå nullet vi ut forrige og neste pekerne til Noden denne før vi satte denne som lik neste. Utenfor løkken nullet vi ut hode og hale
 og satte antall til 0 før vi økte endringer med 1.
 I metode-2 er det det som er i løkken som endres. Her tilkaller vi metoden fjern(0). Den fjerner bare første element i den
-DobellLenkede listen. Her brukte den mye lengre tid enn metode-1.
+DobbeltLenkede listen. Her brukte den mye lengre tid enn metode-1.
 
 I oppgave 8a så sjekket vi først at iteratorendringer og endringer ikke er ulike og at det finnes neste element.
 Vi lagret denne sin verdi og satte denne som sin neste før vi returnerte den midlertidige verdien.
-I oppgave 8b returnerte vi en ny DobbeltLenketListeIterator();
-I oppgave 8c brukte vi finnNode() hjelpemetoden til å finne Noden med indeksen.
+I oppgave 8b returnerte vi en ny DobbeltLenketListeIterator().
+I oppgave 8c brukte vi finnNode() hjelpemetoden til å finne Noden med indeksen og kodet resten av konstruktøren som vanlig.
 I oppgave 8d brukte først indeksKontroll metoden før vi lagde og returnerte ny DobbeltLenketListeIterator.
 
 I oppgave 9 så testet vi først om iteratorendringer og endringer var like i tillegg så sjekket vi at fjernOK er lik sann/true.

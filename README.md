@@ -76,20 +76,25 @@ brukte vi en for-løkke som kjører antall-1 ganger. I forløkken fant vi neste 
 Etterpå nullet vi ut forrige og neste pekerne til Noden denne før vi satte denne som lik neste. Utenfor løkken nullet vi ut hode og hale
 og satte antall til 0 før vi økte endringer med 1.
 I metode-2 er det det som er i løkken som endres. Her tilkaller vi metoden fjern(0). Den fjerner bare første element i den
-DobellLenkede listen. Her brukte den mye lengre tid enn metode-1.
+DobbeltLenkede listen. Her brukte den mye lengre tid enn metode-1.
 
 I oppgave 8a så sjekket vi først at iteratorendringer og endringer ikke er ulike og at det finnes neste element.
 Vi lagret denne sin verdi og satte denne som sin neste før vi returnerte den midlertidige verdien.
-I oppgave 8b returnerte vi en ny DobbeltLenketListeIterator();
-I oppgave 8c brukte vi finnNode() hjelpemetoden til å finne Noden med indeksen.
+I oppgave 8b returnerte vi en ny DobbeltLenketListeIterator().
+I oppgave 8c brukte vi finnNode() hjelpemetoden til å finne Noden med indeksen og kodet resten av konstruktøren som vanlig.
 I oppgave 8d brukte først indeksKontroll metoden før vi lagde og returnerte ny DobbeltLenketListeIterator.
 
 I oppgave 9 så testet vi først om iteratorendringer og endringer var like i tillegg så sjekket vi at fjernOK er lik sann/true.
 Etter det så satt vi fjernOK til å være usann/false, før vi sjekket om det bare er ett element i listen.
-Hvis fjernOK, så setter vi den som både hode og hale og nuller den ut.
+Hvis antall er lik 1, så setter vi den som både hode og hale og nuller den ut.
 Hvis ikke, så sjekker vi om den siste skal slettes og oppdaterer hale. Vi satt hale lik sin forrige også neste pekeren til den nye halen nulles ut.
-Hvis ikke, så sjekker vi om den første skal slettes og oppdaterer hode. Bruker samme prinsipp som vi oppdaterte hale, bare at her nuller vi forrige pekeren til den nye hoden.
+Hvis ikke, så sjekker vi om den første skal slettes og oppdaterer hode. Bruker samme prinsipp som vi brukte til å oppdatere hale,
+bare at her nuller vi forrige pekeren til den nye hoden.
 Hvis ikke, så lager vi en ny node p av noden vi skal slette. Så oppdaterer vi neste pekeren til noden som kommer før p til å peke på noden som kommer etter p og det samme motsatt vei.
 Fordi noden p ikke har noen pekere som peker på den, vil den bli fanget opp av javas garbage collector.
+Til slutt minker vi antall med 1 og øker både endringer og iteratorendringer med 1.
 
-I oppgave 10 så brukte vi en ... til å ...
+I oppgave 10 så sjekket vi først at listen ikke er tom og så brukte vi to for-løkker i hverandre. Inne i den andre løkka så bruker komparator c til å sammenligne to elemeneter som vi henter ved hjelp av hent() metoden i grensesnittet Liste.
+Komparatoren returnerer -1 hvis første element er større enn andre element, 0 hvis de er like, eller 1 hvis andre element er større enn første.
+Så sjekker med en if-setning om komparatoren returnerer -1. I if-setningen så lagrer vi verdien til første element i komparatoren.
+Så oppdaterer vi verdien som står i posisjonen til første element, med verdien til andre element. Til slutt oppdaterer vi verdien til andre element til å være lik den midlertidige verdien.

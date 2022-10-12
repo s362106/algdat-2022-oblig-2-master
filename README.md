@@ -37,7 +37,7 @@ I oppgave 3a) så gikk frem ved at vi lagde en privat hjelpetabell finnNode(), v
 hvis dette stemmer så er indeksen mot venstre i listen og dermed starter vi fra hode. Ellers hvis det er større enn halvparten starter vi på hale.
 Deretter lager vi hent(), hvor det kalles idekskontroll, med false parameter. Det metoden gjør er å hente posisjonens verdi, nemlig T-verdien som er posisjonen for en node.
 Så lager vi metoden oppdater(), starter med at det kreves at nyverdi ikke kan være null! Deretter opprettes en peker, som peker på noden sin indeks-posisjon. Deretter oppreter vi gammelVerdi
-som har verdien til pekeren. Øker endringer og dermed setter gammelVerdi til å være lik nynyverdi. og retunerer gammelverdi! Oppgave 3b) lager vi metoden subliste(), først implementerer vi fraTilKontrolleren fra kompendiet. Deretter lager vi en lager vi et Array
+som har verdien til pekeren. Øker endringer og dermed setter gammelVerdi til å være lik nynyverdi. og retunerer gammelverdi! Oppgave 3b) lager vi metoden subliste(), først implementerer vi fraTilKontrolleren fra kompendiet. Deretter lager vi et Array
 fra vår Liste i koden. Så definerer vi intervallet som er til-fra, og sjekker om intervallet er mindre enn 1 ved et if-kall. Hvis dette stemmer retunerer vi array-en liste-(en instans av klassen DobbeltLenketListe)). 
 Så lager vi en "nåværende" node- som finner noder fra intervallet fra. Vi løper gjennom et forløkke fra det intervallet som vi først hadde definert
 og deretter legger verdien til "nåværende" node inn i array-listen vår. Den nåværende blir satt til å være nåværende.neste. og vi retunerer array-listen til slutt. 

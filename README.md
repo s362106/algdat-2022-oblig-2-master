@@ -16,7 +16,14 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 
 # Oppgavebeskrivelse
 
-I oppgave 1 så gikk vi frem ved å ...
+I oppgave 1 så gikk vi frem ved å først lage metoden antall. Dette gjøres enkelt ved å bare skrive "retrun antall;".
+Deretter skulle vi lage boolean tom() som skal retunere true eller false for om listen er tom eller ikke. 
+For at listen skal være tom må hode være lik null-true, hvis det ikke er dette tilfellet er den ikke tom-false.
+Deretter skulle vi lage konstruktør for dobbeltLenketListe, hvor vi først sjekker tabellen a == null, hvis dette stemmer
+så kaster vi et nullPoint-unntak til brukeren. Deretter sjekker vi hvis lengen er større enn 0, her sjekker vi med en while løkke
+første elementet i listen som ikke er null. Deretter lages hode i et if-kall som sjekker hvis elementet != null så lages hode!
+Så blir hale satt til verdien hode. Deretter hentes et og et verdi fra tabellen a, som vi definerer som nye noder og som halen peker på. Til
+slutt økes antallet. 
 
 I oppgave 2 så brukte vi en en StringBuilder for å lage metodene toString() og omvendtString(). Hvis listen 
  er returnerer vi "[]", ellers hadde vi en node p som traverserer fra hode til hale vha neste- og forrige-peker

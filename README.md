@@ -73,6 +73,12 @@ I oppgave 8b returnerte vi en ny DobbeltLenketListeIterator();
 I oppgave 8c brukte vi finnNode() hjelpemetoden til å finne Noden med indeksen.
 I oppgave 8d brukte først indeksKontroll metoden før vi lagde og returnerte ny DobbeltLenketListeIterator.
 
-I oppgave 9 så brukte vi en ... til å ...
+I oppgave 9 så testet vi først om iteratorendringer og endringer var like i tillegg så sjekket vi at fjernOK er lik sann/true.
+Etter det så satt vi fjernOK til å være usann/false, før vi sjekket om det bare er ett element i listen.
+Hvis fjernOK, så setter vi den som både hode og hale og nuller den ut.
+Hvis ikke, så sjekker vi om den siste skal slettes og oppdaterer hale. Vi satt hale lik sin forrige også neste pekeren til den nye halen nulles ut.
+Hvis ikke, så sjekker vi om den første skal slettes og oppdaterer hode. Bruker samme prinsipp som vi oppdaterte hale, bare at her nuller vi forrige pekeren til den nye hoden.
+Hvis ikke, så lager vi en ny node p av noden vi skal slette. Så oppdaterer vi neste pekeren til noden som kommer før p til å peke på noden som kommer etter p og det samme motsatt vei.
+Fordi noden p ikke har noen pekere som peker på den, vil den bli fanget opp av javas garbage collector.
 
 I oppgave 10 så brukte vi en ... til å ...
